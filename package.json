@@ -1,0 +1,41 @@
+{
+  "name": "burger-queen",
+  "version": "1.0.0",
+  "description": "[React](https://reactjs.org/) y [Angular](https://angular.io/)\r son algunos de los _frameworks_ y _librerías_ de JavaScript más utilizados por\r lxs desarrolladorxs alrededor del mundo, y hay una razón para eso.\r En el contexto del navegador, [_mantener la interfaz sincronizada con el estado\r es difícil_](https://medium.com/dailyjs/the-deepest-reason-why-modern-javascript-frameworks-exist-933b86ebc445).\r Al elegir un _framework_ o _librería_ para nuestra interfaz, nos apoyamos en una\r serie de convenciones e implementaciones _probadas_ y _documentadas_ para\r resolver un problema común a toda interfaz web. Esto nos permite concentrarnos\r mejor (dedicar más tiempo) en las características _específicas_ de\r nuestra aplicación.",
+  "main": "index.js",
+  "scripts": {
+    "htmlhint": "htmlhint dist/*.html ",
+    "eslint": "eslint --ext .js src/ test/",
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanielaGutierrezG/LIM009-fe-burger-queen.git"
+  },
+  "keywords": [
+    "javascript",
+    "firebase",
+    "jest"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanielaGutierrezG/LIM009-fe-burger-queen/issues"
+  },
+  "homepage": "https://github.com/DanielaGutierrezG/LIM009-fe-burger-queen#readme",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.2.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.10.0",
+    "eslint-plugin-jest": "^22.1.2",
+    "jest": "^24.8.0",
+    "mock-cloud-firestore": "^0.9.3",
+    "htmlhint": "^0.10.1",
+    "regenerator-runtime": "^0.13.1"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1"
+  }
+}
