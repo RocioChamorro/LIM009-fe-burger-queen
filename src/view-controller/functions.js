@@ -2,6 +2,8 @@ import { databaseOrder } from '../firestore.js'
 
 export const saveOrderList = () => {
   document.querySelectorAll(".btnProduct").forEach(btn => btn.addEventListener('click', () => {
+    const error = document.getElementById('msmError');
+    error.innerHTML = '';
     const idBtn = btn.dataset.id;
     const arrObj = JSON.parse(sessionStorage.getItem('arrList'));
     let obj = arrObj.filter(element => {
@@ -215,6 +217,7 @@ export const printOrder = () => {
     btnSubmit.setAttribute('id', 'submit');
     btnSubmit.setAttribute('class', 'btn btn-warning');
     btnSubmit.setAttribute('type', 'button');
+    document.querySelector('#nameClient').textContent !== 'Cliente : ' ? btnSubmit.removeAttribute('disabled') : btnSubmit.setAttribute('disabled', true);
     btnSubmit.textContent = 'Enviar a cocina';
     blockSubmit.appendChild(btnSubmit);
     sum(arrListOrder);
@@ -349,6 +352,8 @@ const sendOrder = (arrObj) => {
 export const resetWaiter = () => {
   const btnReset = document.querySelector('#btnResetWaiter');
   btnReset.addEventListener('click', () => {
+    const error = document.getElementById('msmError');
+    error.innerHTML = '';
     const nameClient = document.getElementById('nameClient');
     sessionStorage.removeItem('Nombre');
     sessionStorage.removeItem('arrListOrder');

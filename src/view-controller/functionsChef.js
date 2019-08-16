@@ -46,10 +46,11 @@ const timeConversion = (time) => {
 
 export const readOrders = (query) => {
     const containerChef = document.querySelector('#containerChef');
-    containerChef.innerHTML = '';
-    query.forEach((doc) => {
-        containerChef.innerHTML +=
-            `<table class='table tableWidth'>
+    if (containerChef) {
+        containerChef.innerHTML = '';
+        query.forEach((doc) => {
+            containerChef.innerHTML +=
+                `<table class='table tableWidth'>
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">Cliente</th>
@@ -65,40 +66,68 @@ export const readOrders = (query) => {
                         <td>
                         <select class='state-select selctState form-control form-control-sm' data-select="${doc.id}">
                             ${doc.data().state === 'En preparación' ?
-                `<option value = ${doc.data().state}  selected >${doc.data().state}</option>
+                    `<option value = ${doc.data().state}  selected >${doc.data().state}</option>
                                 <option value ='Preparado'>Preparado</option>
                                 <option value ='Entregado'>Entregado</option>` :
-                doc.data().state === 'Preparado' ?
-                    `<option value = ${doc.data().state}  selected >${doc.data().state}</option>
+                    doc.data().state === 'Preparado' ?
+                        `<option value = ${doc.data().state}  selected >${doc.data().state}</option>
                                     <option value ='Entregado'>Entregado</option>
                                     <option value ='En preparación'>En preparación</option>` :
-                    doc.data().state === 'Entregado' ?
-                        `<option value = ${doc.data().state}  selected >${doc.data().state}</option>
+                        doc.data().state === 'Entregado' ?
+                            `<option value = ${doc.data().state}  selected >${doc.data().state}</option>
                                         <option value ='Preparado'>Preparado</option>`
-                        : ''}
+                            : ''}
                             </select>
                         </td>
                         <td id='time-${doc.id}'>
                             ${doc.data().finalDate ?
-                            (doc.data().state === 'Preparado' ?
-                            timeConversion(doc.data().finalDate.seconds - doc.data().createdAt.seconds) : '') : ''}  
+                    (doc.data().state === 'Preparado' ?
+                        timeConversion(doc.data().finalDate.seconds - doc.data().createdAt.seconds) : '') : ''}  
                         </td>
                     </tr>
                 </tbody>
             </table>`
-        arrOrders(doc.data().order, `order-${doc.id}`);
-        updatePropert();
-    })
+            arrOrders(doc.data().order, `order-${doc.id}`);
+            updatePropert();
+        })
+    }
 }
 
+export let unsusbcribe = null;
 export const filterValueBtn = () => {
     document.querySelectorAll(".btnFilter").forEach(btn => btn.addEventListener('click', (e) => {
-        filterFirestore(e.target.value, (query) => {
-            readOrders(query)
+        if (unsusbcribe) {
+            unsusbcribe()
+        }
+        switch (e.target.id) {
+            case 'enPreparacion': {
+                document.querySelector('#preparado').style.backgroundColor = "#0000";
+                document.querySelector('#entregado').style.backgroundColor = "#0000";
+                e.target.style.backgroundColor = "#ffc107";
+                break;
+            }
+            case 'preparado': {
+                document.querySelector('#enPreparacion').style.backgroundColor = "#0000";
+                document.querySelector('#entregado').style.backgroundColor = "#0000";
+                e.target.style.backgroundColor = "#ffc107";
+                break;
+            }
+            case 'entregado': {
+                document.querySelector('#enPreparacion').style.backgroundColor = "#0000";
+                document.querySelector('#preparado').style.backgroundColor = "#0000";
+                e.target.style.backgroundColor = "#ffc107";
+                break;
+            }
+            default: {
+                e.target.style.backgroundColor = "#ffc107";
+            }
+        }
+
+        unsusbcribe = filterFirestore(e.target.value, (query) => {
+            readOrders(query);
         });
     }))
 }
-
 
 
 

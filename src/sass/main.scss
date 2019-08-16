@@ -116,6 +116,9 @@ button {
         flex-flow: column wrap;
         .contName {
             display: flex;
+            justify-content: center;
+            flex-flow: row wrap;
+            align-items: baseline;
            
             input {
                 width: 35%;
@@ -126,6 +129,11 @@ button {
             input[type=text]:focus {
                 width: 50%;
             }
+            #msmError{
+                font-size: 12px;
+                margin: 18px 22px 13px 22px;
+            }
+
         }
         #btnsBreakLun {
             margin: 2% 0;

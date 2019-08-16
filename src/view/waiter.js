@@ -18,10 +18,11 @@ export default () => {
                 <div class="contName"> 
                     <input id="name" type="text" class="form-control mr-sm-2" placeholder="Nombre del cliente"/>
                     <button id="addClient" class="btn btn-warning ">oK</button>
+                    <p id='msmError' class='text-danger'</p>
                 </div>
-                <div id='btnsBreakLun' class="btn-group btn-group-toggle" data-toggle="buttons">
+                <div id='btnsBreakLun' class='btn-group btn-group-toggle'>
                     <button class="btn btn-warning" id='breakfast'>Desayuno</button>
-                    <button class="btn btn-warning" id='lunch'>Almuerzo y cena</button>
+                    <button class="btn btn-outline-warning text-body" id='lunch'>Almuerzo y cena</button>
                 </div>
                 <div class="containerBtnCard" id="containerWaiter"></div>
 
@@ -63,23 +64,40 @@ export default () => {
     div.innerHTML = tmp2;
 
     div.querySelector('#addClient').addEventListener('click', () => {
-        let name = document.getElementById('name').value;
+        let name = document.getElementById('name').value.trim();
+        const error = div.querySelector('#msmError');
+        error.innerHTML = '';
+        if (name.length === 0) {
+            return error.innerHTML = 'Escribe el nombre del cliente'
+        }
         sessionStorage.setItem("Nombre", name);
-        const nameClient = document.getElementById('nameClient');
+        const nameClient = div.querySelector('#nameClient');
         nameClient.innerHTML = `Cliente : ${name}`;
+        const selectbtnSubmit = document.querySelector('#submit');
+        if (selectbtnSubmit) {
+            name === '' ? '' : nameClient.textContent !== 'Cliente : ' ? selectbtnSubmit.removeAttribute('disabled') : selectbtnSubmit.setAttribute('disabled', true)
+        };
         document.getElementById("name").value = "";
+
     })
 
     const btnBreakfast = div.querySelector('#breakfast');
     btnBreakfast.addEventListener('click', () => {
+        const error = div.querySelector('#msmError');
+        error.innerHTML = '';
+        div.querySelector('#lunch').style.backgroundColor = "#0000";
+        div.querySelector('#breakfast').style.backgroundColor = "#ffc107";
         readData('menumañana', 'Producto', (query) => {
             readWaiter(query);
             saveOrderList();
         });
     })
-
     const btnLunch = div.querySelector('#lunch');
     btnLunch.addEventListener('click', () => {
+        const error = div.querySelector('#msmError');
+        error.innerHTML = '';
+        div.querySelector('#breakfast').style.backgroundColor = "#0000";
+        div.querySelector('#lunch').style.backgroundColor = "#ffc107";
         readData('menutarde', 'Producto', (query) => {
             readWaiter(query);
             saveOrderList();
