@@ -25,6 +25,9 @@
             border: groove 1em white;  
             border-radius: 2em;
             margin: 1%;
+            @include media-breakpoint-only(xs) { 
+                width: 100%;
+            }
         }
         .containerHomeBtn {
             flex: 0.5 1 auto;
@@ -121,10 +124,15 @@ button {
     }
     @include media-breakpoint-only(xs) { 
         display: flex;
-        flex-flow: row wrap;
-        background-color: aqua;
-      
-    }
+        flex-flow: row wrap;  
+        .containerbuttons .contName input {
+            width: 48%;
+            margin: 7px;
+       }
+       .containerbuttons .contName {
+            justify-content: unset;
+        }
+    } 
     
        
         @include media-breakpoint-only(lg) { 
@@ -188,10 +196,16 @@ button {
     align-items: center;
     .table{
         margin-bottom: 0;
+        @include media-breakpoint-only(xs) { 
+            font-size: 12px;
+        }
     }
     .tableWidth td{
         width: 22%;
         padding:0.75rem;
+        @include media-breakpoint-only(xs) { 
+            font-size: 12px;
+        }
             .state-select {
                 width: 90%;
                 height: calc(1.5em + 0.75rem + 2px);
@@ -202,7 +216,11 @@ button {
                 background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAABHVBMVEVHcEzxxA/xxg7xww/xxA/xxA/xxA//vwDxxA/qvxXxxA7/1QDwxQ/yxQ/yxA/xxA/ouRfvxRDxxA///wDvxxDxxBDxxA/xxA/wxA/xxA/xxA/yww3wxA/xxA/yvw3xxBDxxg7xwxDyxQ/xxA/twRLxxA/xxA/xxQ/yxQ/wxA/vxRDwww/zxQzwxQ/xxA/yww/xxA7xxA/xxA/xxA/yxQ/wxA/xxA/yww3yxA/xxA/yxRDxxA/yxA/zwgzxxA/ywxHzwgzwww/xxBD/tgD/xhzxxQ7uwhHxxA/yxRDuxBHwww/wxA/xxA7xxA7xxA/xxA/xxA///wDtyBLxxA7xxA/wwQ/xxQ7xxRDxxA/yxBDyyQ3xww7yxRDxxA/xxA/ByvJLAAAAXnRSTlMA/BK43aXYBP4MSgadiGSXCzDuASDV8/g0uv1Mm94Ugkdequgd7c6VdlcfMxZC4prC56nsmfbXJnX7Ydy9KvBNFYmUBwk1LvpgHlXBfaHG6u8CDrC2IViiu18TfE/KO2C33QAAASZJREFUSMftltdWwkAURQMiITRpIiiCIhbARhdUmgqIFcSC5f7/Z7DUSQhlZc68c5/3XjO3ZSJJi5gTqcr+x7mvDdKBeyv9B4S33k1EuGDO24gEhLdnIgHBsUIkIngGJCR4HklIcCzp0YxzO/0pGwr6+99tyNz6JMe4xQ7U/9Cn8csK0t8HjXdB8+DV+hvD5i2r3Qecz3U1XwUTvtQD7OAGFBl/CvK36gE1UOgwfkcGhSYTnOjKh5kwRAULE0KokGNClEtGaE6cGAhXP7P83rXREYmnaX731fhSR+VJ3rTFS+NgUjjj5u2P6/kXP7+myuqYt/aRLpSqKh+8xPr2zfbT1kU73RBZ/9/o/X30LmRYkMybRMd1kTfNW1i7EXsF3e7Fn8BUjAAVhpKVvROdqwAAAABJRU5ErkJggg==") 
                 no-repeat right  -0.2rem center/25px 33px;
                 @include media-breakpoint-only(xs) { 
-                    width: 133%;
+                    width: 100%;
+                    font-size: 12px;
+                    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAABHVBMVEVHcEzxxA/xxg7xww/xxA/xxA/xxA//vwDxxA/qvxXxxA7/1QDwxQ/yxQ/yxA/xxA/ouRfvxRDxxA///wDvxxDxxBDxxA/xxA/wxA/xxA/xxA/yww3wxA/xxA/yvw3xxBDxxg7xwxDyxQ/xxA/twRLxxA/xxA/xxQ/yxQ/wxA/vxRDwww/zxQzwxQ/xxA/yww/xxA7xxA/xxA/xxA/yxQ/wxA/xxA/yww3yxA/xxA/yxRDxxA/yxA/zwgzxxA/ywxHzwgzwww/xxBD/tgD/xhzxxQ7uwhHxxA/yxRDuxBHwww/wxA/xxA7xxA7xxA/xxA/xxA///wDtyBLxxA7xxA/wwQ/xxQ7xxRDxxA/yxBDyyQ3xww7yxRDxxA/xxA/ByvJLAAAAXnRSTlMA/BK43aXYBP4MSgadiGSXCzDuASDV8/g0uv1Mm94Ugkdequgd7c6VdlcfMxZC4prC56nsmfbXJnX7Ydy9KvBNFYmUBwk1LvpgHlXBfaHG6u8CDrC2IViiu18TfE/KO2C33QAAASZJREFUSMftltdWwkAURQMiITRpIiiCIhbARhdUmgqIFcSC5f7/Z7DUSQhlZc68c5/3XjO3ZSJJi5gTqcr+x7mvDdKBeyv9B4S33k1EuGDO24gEhLdnIgHBsUIkIngGJCR4HklIcCzp0YxzO/0pGwr6+99tyNz6JMe4xQ7U/9Cn8csK0t8HjXdB8+DV+hvD5i2r3Qecz3U1XwUTvtQD7OAGFBl/CvK36gE1UOgwfkcGhSYTnOjKh5kwRAULE0KokGNClEtGaE6cGAhXP7P83rXREYmnaX731fhSR+VJ3rTFS+NgUjjj5u2P6/kXP7+myuqYt/aRLpSqKh+8xPr2zfbT1kU73RBZ/9/o/X30LmRYkMybRMd1kTfNW1i7EXsF3e7Fn8BUjAAVhpKVvROdqwAAAABJRU5ErkJggg==") 
+                    no-repeat right 0.3rem center/33px 36px;
+                    padding: inherit;    
                 }
                 @include media-breakpoint-only(sm) {
                     width: 120%;
@@ -242,5 +260,22 @@ button {
     }
     .btnsExtras {
         @extend .btnsFilter;
+    }
+}
+.navbar-light .navbar-brand {
+    @include media-breakpoint-only(xs) { 
+        font-size: inherit;
+    }
+}  
+.btn-sm, .btn-group-sm > .btn {
+    @include media-breakpoint-only(xs) { 
+        font-size: 12px;
+    }
+}
+
+.btn-warning {
+    @include media-breakpoint-only(xs) { 
+        font-size: 13px;
+        margin: 8px 0px 8px 0px;
     }
 }
