@@ -9758,6 +9758,9 @@ button {
 }
 .general .containerbuttons .contName {
   display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  align-items: baseline;
 }
 .general .containerbuttons .contName input {
   width: 35%;
@@ -9766,6 +9769,10 @@ button {
 }
 .general .containerbuttons .contName input[type=text]:focus {
   width: 50%;
+}
+.general .containerbuttons .contName #msmError {
+  font-size: 12px;
+  margin: 18px 22px 13px 22px;
 }
 .general .containerbuttons #btnsBreakLun {
   margin: 2% 0;
