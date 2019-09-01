@@ -1,0 +1,16 @@
+@mixin appearance($property) {
+    -moz-appearance:$property;
+	-webkit-appearance:$property;
+	-ms-appearance:$property;
+    -o-appearance:$property;
+}
+@mixin  transition($value:width .35s ease-in-out) {
+    -webkit-transition: $value;
+    transition: $value;   
+}
+
+@mixin flexbox($direction: row wrap,  $justify: center) {
+    display: flex;
+    flex-flow: $direction;
+    justify-content: $justify;
+}
